@@ -1,0 +1,29 @@
+seed: 540334953
+sample_rate: 44100
+frame_length: 1024
+hop_length: 512
+n_fft: 1024
+n_mels: 40
+n_mfcc: 25
+fmin: 0.0
+fmax: 22050.0
+feature_variant: paper225
+
+training:
+  strategies: [original, white, traffic, mixed]
+  augmentation_snrs_db: [0, 10, 20]
+  augmented_copies_per_clip: 1
+  include_original_in_augmented_training: true
+  svm_c: 1.0
+  svm_gamma: scale
+
+testing:
+  conditions: [original, white, pink, traffic, crowd]
+  snrs_db: [20, 10, 0]
+
+noise:
+  traffic_environment: STRAFFIC
+  crowd_environment: PCAFETER
+  train_fraction: 0.60
+  guard_fraction: 0.10
+  test_fraction: 0.30
