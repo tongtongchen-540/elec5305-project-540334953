@@ -6,6 +6,14 @@
 
 [Project proposal PDF](./ELEC5305_Project_Proposal_540334953.pdf)
 
+## Final Deliverables
+
+- [Final Research Report (PDF)](report/ELEC5305_Final_Report_Submission_2026-11-13.pdf)
+- [Video Demonstration](https://youtu.be/T1r7gkJSBcs)
+- [Verified Classification Results](results/full_experiment/)
+- [Supplementary Signal Analysis](results/signal_analysis/)
+
+
 ## Research question
 
 > To what extent does waveform-level noise augmentation improve an MFCC-SVM urban sound classifier when test noise is matched to, or different from, the noise used during training?
@@ -145,7 +153,7 @@ This produces fold-level metrics, out-of-fold predictions, a normalised confusio
 
 Choose a representative UrbanSound8K clip and run:
 
-
+```bash
 elec5305-analyse \
   --audio data/UrbanSound8K/audio/fold1/108041-9-0-11.wav \
   --class-label street_music \
@@ -153,7 +161,7 @@ elec5305-analyse \
   --crowd-noise data/DEMAND/PCAFETER.wav \
   --config configs/experiment.yaml \
   --output-dir results/signal_analysis/street_music
-
+```
 
 The command saves audio examples, noise power spectra, waveform/log-Mel/MFCC comparison figures and quantitative relative representation distances.
 
