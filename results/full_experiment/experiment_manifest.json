@@ -1,0 +1,48 @@
+{
+  "augmentation_policy": "Each augmented strategy uses original training clips plus one deterministic augmented copy per clip.",
+  "crowd_environment_held_out": "PCAFETER",
+  "data_leakage_control": "Official UrbanSound8K folds; model preprocessing fitted on training folds; disjoint DEMAND time regions; crowd environment excluded from training.",
+  "evaluated_folds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "experiment": "matched_mismatched_noise_augmentation",
+  "noise_partition": {
+    "guard_fraction": 0.1,
+    "test_fraction": 0.30000000000000004,
+    "train_fraction": 0.6
+  },
+  "seed": 540334953,
+  "testing_conditions": [
+    "original",
+    "white",
+    "pink",
+    "traffic",
+    "crowd"
+  ],
+  "testing_snrs_db": [
+    20.0,
+    10.0,
+    0.0
+  ],
+  "traffic_environment": "STRAFFIC",
+  "training_snrs_db": [
+    0.0,
+    10.0,
+    20.0
+  ],
+  "training_strategies": [
+    "original",
+    "white",
+    "traffic",
+    "mixed"
+  ]
+}
