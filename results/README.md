@@ -34,3 +34,9 @@ Large prediction archives, model files, feature caches, and the original audio d
 ## Video Demonstration
 
 https://youtu.be/T1r7gkJSBcs
+
+## Supplementary Signal Analysis
+
+The [`signal_analysis/`](signal_analysis/) directory provides an audio-sample manifest and 48 verified waveform-level perturbation measurements (four selected clips, four added-noise types, and three SNR settings).
+
+The measurements are illustrative, not dataset-wide classification results. Original audio and DEMAND noise files are not redistributed; use the documented analysis command to regenerate waveform, log-Mel, and MFCC images locally.
