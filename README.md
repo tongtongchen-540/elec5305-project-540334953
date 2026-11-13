@@ -145,14 +145,15 @@ This produces fold-level metrics, out-of-fold predictions, a normalised confusio
 
 Choose a representative UrbanSound8K clip and run:
 
-```bash
+
 elec5305-analyse \
-  --audio data/UrbanSound8K/audio/fold1/EXAMPLE.wav \
-  --class-label "siren" \
+  --audio data/UrbanSound8K/audio/fold1/108041-9-0-11.wav \
+  --class-label street_music \
   --traffic-noise data/DEMAND/STRAFFIC.wav \
   --crowd-noise data/DEMAND/PCAFETER.wav \
-  --output-dir results/signal_analysis
-```
+  --config configs/experiment.yaml \
+  --output-dir results/signal_analysis/street_music
+
 
 The command saves audio examples, noise power spectra, waveform/log-Mel/MFCC comparison figures and quantitative relative representation distances.
 
@@ -205,6 +206,49 @@ Synthetic scores only verify software operation and must not be reported as rese
 7. K. J. Piczak, “Environmental Sound Classification with Convolutional Neural Networks,” *IEEE MLSP*, 2015. [DOI](https://doi.org/10.1109/MLSP.2015.7324337)
 8. S. Chu, S. Narayanan, and C.-C. J. Kuo, “Environmental Sound Recognition with Time-Frequency Audio Features,” *IEEE TASLP*, 2009. [DOI](https://doi.org/10.1109/TASL.2009.2017438)
 
+
 ## Status
 
-The codebase and synthetic validation are complete. Research results remain provisional until all ten official UrbanSound8K folds and the specified DEMAND recordings have been processed. The final report must use those real-data outputs, not smoke-test values.
+**Project Status: Completed — 13 November 2026**
+
+The complete real-data experiment has been successfully finished using all 8,732 UrbanSound8K recordings and the 10 official cross-validation folds.
+
+Four training strategies were evaluated under 12 noisy test conditions.
+
+### Final Experimental Results
+
+| Training Strategy | Mean Accuracy | Macro F1 |
+|---|---:|---:|
+| Original | 50.23% | 47.66% |
+| White | 58.54% | 60.23% |
+| Traffic | 56.08% | 57.36% |
+| Mixed | **59.91%** | **61.90%** |
+
+Mixed noise augmentation improved average classification accuracy by **9.68 percentage points** compared with the Original model.
+
+However, Traffic augmentation achieved higher accuracy on the held-out crowd noise environment at all three tested SNRs.
+
+The completed experiment produced:
+- 520 fold-level metric records.
+- 454,064 out-of-fold predictions.
+- Accuracy-versus-SNR plots and noise-transfer analysis.
+- Confusion matrices and class-level performance analysis.
+- 48 supplementary signal perturbation analyses.
+
+### Video Demonstration
+
+The video demonstrates the Python audio-analysis code, original and noise-augmented audio playback, and MFCC visualizations.
+
+**[Watch the Final Project Demonstration](https://youtu.be/T1r7gkJSBcs)**
+
+### Reproducibility
+
+The repository contains the Python implementation, configuration files, test scripts, and instructions for reproducing the experiments.
+
+The reported classification results are derived from the real UrbanSound8K dataset and DEMAND noise recordings, not from synthetic smoke-test scores.
+
+### Limitations
+
+Augmented training strategies include one additional noisy copy per training clip, resulting in different training-set sizes compared with the Original model.
+
+The held-out noise evaluation uses one cafeteria recording, so the results do not establish universal generalization to unseen acoustic environments.
